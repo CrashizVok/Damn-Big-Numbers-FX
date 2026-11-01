@@ -12,42 +12,80 @@ public class HelloController {
     private DamnBigNumber a = DamnBigNumber.DBN_ZERO;
     private DamnBigNumber b = DamnBigNumber.DBN_ZERO;
     private String operation = "+";
+    private boolean newNumber = true;
+
     @FXML
     protected void handleAddClick(ActionEvent actionEvent) {
-        String displayNumSrt = display.getText();
-        a = new DamnBigNumber(displayNumSrt);
+        setOperation("+");
+    }
+
+    @FXML
+    protected void handleSubtractClick(ActionEvent actionEvent) {
+        setOperation("-");
+    }
+
+    @FXML
+    protected void handleMultiplyClick(ActionEvent actionEvent) {
+        setOperation("*");
+    }
+
+    @FXML
+    protected void handleDivideClick(ActionEvent actionEvent) {
+        setOperation("/");
+    }
+
+    @FXML
+    protected void handleClearClick(ActionEvent actionEvent) {
+        display.setText("");
+        a = DamnBigNumber.DBN_ZERO;
+        b = DamnBigNumber.DBN_ZERO;
         operation = "+";
+        newNumber = true;
+    }
+
+    private void setOperation(String op) {
+        a = readDisplay();
+        operation = op;
+        newNumber = true;
+    }
+
+    private DamnBigNumber readDisplay() {
+        String text = display.getText();
+        return new DamnBigNumber(text.isEmpty() ? "0" : text);
     }
 
     @FXML
     protected void handleEqualsClick(ActionEvent actionEvent){
-        String displayNumSrt = display.getText();
-        b = new DamnBigNumber(displayNumSrt);
+        b = readDisplay();
 
-        switch (operation){
-            case "+":
-                DamnBigNumber c = DamnBigNumbers.add(a, b);
-                display.setText(c.getNumStr());
-                break;
-            case "-":
-                DamnBigNumber d = DamnBigNumbers.subtract(a, b);
-                display.setText(d.getNumStr());
-                break;
-            case "*":
-                DamnBigNumber f = DamnBigNumbers.multiply(a, b);
-                display.setText(f.getNumStr());
-                break;
-            case "/":
-                DamnBigNumber g = DamnBigNumbers.divide(a, b);
-                display.setText(g.getNumStr());
-                break;
+        try {
+            switch (operation){
+                case "+":
+                    display.setText(DamnBigNumbers.add(a, b).getNumStr());
+                    break;
+                case "-":
+                    display.setText(DamnBigNumbers.subtract(a, b).getNumStr());
+                    break;
+                case "*":
+                    display.setText(DamnBigNumbers.multiply(a, b).getNumStr());
+                    break;
+                case "/":
+                    display.setText(DamnBigNumbers.divide(a, b).getNumStr());
+                    break;
+            }
+        } catch (Exception e) {
+            display.setText("error");
         }
+        newNumber = true;
     }
-    public void handleDigitClick(ActionEvent actionEvent){
-        Button source = (Button) actionEvent.getSource();
-        String value = source.getText();
-        int digit = Integer.parseInt(value);
 
-        display.setText(display.getText()+value);
+    @FXML
+    public void handleDigitClick(ActionEvent actionEvent){
+        if (newNumber){
+            display.setText("");
+            newNumber = false;
+        }
+        Button source = (Button) actionEvent.getSource();
+        display.setText(display.getText()+source.getText());
     }
 }

@@ -17,7 +17,6 @@
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         <ColumnConstraints />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -27,26 +26,26 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
 
-        <Button fx:id="btn7" minWidth="100.0" style="-fx-font-size: 18px;" text="7" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-        <Button fx:id="btn8" minWidth="100.0" style="-fx-font-size: 18px;" text="8" GridPane.columnIndex="1" GridPane.rowIndex="0" />
-        <Button fx:id="btn9" minWidth="100.0" style="-fx-font-size: 18px;" text="9" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-        <Button fx:id="btnDivide" minWidth="100.0" style="-fx-font-size: 18px;" text="/" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+        <Button fx:id="btn7" minWidth="100.0" style="-fx-font-size: 18px;" text="7" onAction="#handleDigitClick" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Button fx:id="btn8" minWidth="100.0" style="-fx-font-size: 18px;" text="8" onAction="#handleDigitClick" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Button fx:id="btn9" minWidth="100.0" style="-fx-font-size: 18px;" text="9" onAction="#handleDigitClick" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Button fx:id="btnAdd" minWidth="100.0" style="-fx-font-size: 18px;" text="+" onAction="#handleAddClick" GridPane.columnIndex="3" GridPane.rowIndex="0" />
 
-        <Button fx:id="btn4" minWidth="100.0" style="-fx-font-size: 18px;" text="4" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-        <Button fx:id="btn5" minWidth="100.0" style="-fx-font-size: 18px;" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Button fx:id="btn6" minWidth="100.0" style="-fx-font-size: 18px;" text="6" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-        <Button fx:id="btnMultiply" minWidth="100.0" style="-fx-font-size: 18px;" text="*" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <Button fx:id="btn4" minWidth="100.0" style="-fx-font-size: 18px;" text="4" onAction="#handleDigitClick" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Button fx:id="btn5" minWidth="100.0" style="-fx-font-size: 18px;" text="5" onAction="#handleDigitClick" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button fx:id="btn6" minWidth="100.0" style="-fx-font-size: 18px;" text="6" onAction="#handleDigitClick" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Button fx:id="btnSubtract" minWidth="100.0" style="-fx-font-size: 18px;" text="-" onAction="#handleSubtractClick" GridPane.columnIndex="3" GridPane.rowIndex="1" />
 
-        <Button fx:id="btn1" minWidth="100.0" style="-fx-font-size: 18px;" text="1" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-        <Button fx:id="btn2" minWidth="100.0" style="-fx-font-size: 18px;" text="2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-        <Button fx:id="btn3" minWidth="100.0" style="-fx-font-size: 18px;" text="3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-        <Button fx:id="btnSubtract" minWidth="100.0" style="-fx-font-size: 18px;" text="-" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Button fx:id="btn1" minWidth="100.0" style="-fx-font-size: 18px;" text="1" onAction="#handleDigitClick" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Button fx:id="btn2" minWidth="100.0" style="-fx-font-size: 18px;" text="2" onAction="#handleDigitClick" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Button fx:id="btn3" minWidth="100.0" style="-fx-font-size: 18px;" text="3" onAction="#handleDigitClick" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Button fx:id="btnMultiply" minWidth="100.0" style="-fx-font-size: 18px;" text="*" onAction="#handleMultiplyClick" GridPane.columnIndex="3" GridPane.rowIndex="2" />
 
-        <Button fx:id="btn0" minWidth="100.0" style="-fx-font-size: 18px;" text="0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+        <Button fx:id="btn0" minWidth="100.0" style="-fx-font-size: 18px;" text="0" onAction="#handleDigitClick" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
         <Button fx:id="btnDecimal" disable="true" minWidth="100.0" style="-fx-font-size: 18px;" text="." GridPane.columnIndex="2" GridPane.rowIndex="3" />
-        <Button fx:id="btnAdd" onAction="#handleAddClick" minWidth="100.0" style="-fx-font-size: 18px;" text="+" GridPane.columnIndex="3" />
+        <Button fx:id="btnDivide" minWidth="100.0" style="-fx-font-size: 18px;" text="/" onAction="#handleDivideClick" GridPane.columnIndex="3" GridPane.rowIndex="3" />
 
-        <Button fx:id="btnClear" minWidth="100.0" style="-fx-font-size: 18px;" text="C" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-        <Button fx:id="btnEquals" onAction="#handleEqualsClick" minWidth="100.0" style="-fx-font-size: 18px;" text="=" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+        <Button fx:id="btnClear" minWidth="100.0" style="-fx-font-size: 18px;" text="C" onAction="#handleClearClick" GridPane.columnIndex="0" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+        <Button fx:id="btnEquals" minWidth="100.0" style="-fx-font-size: 18px;" text="=" onAction="#handleEqualsClick" GridPane.columnIndex="3" GridPane.rowIndex="4" />
     </GridPane>
 </VBox>
